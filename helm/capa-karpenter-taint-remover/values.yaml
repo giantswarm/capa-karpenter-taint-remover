@@ -10,6 +10,12 @@ image:
   tag: "[[ .Version ]]"
   registry: "gsoci.azurecr.io"
 
+tolerations:
+  - key: node.cluster.x-k8s.io/uninitialized
+    operator: Exists
+  - key: node.kubernetes.io/not-ready
+    operator: Exists
+
 pod:
   user:
     id: 1000

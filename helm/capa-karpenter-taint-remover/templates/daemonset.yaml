@@ -28,6 +28,8 @@ spec:
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
             capabilities:
               drop:
                 - ALL
@@ -35,12 +37,11 @@ spec:
         managed-by: karpenter
       priorityClassName: system-node-critical
       securityContext:
+        seccompProfile:
+          type: RuntimeDefault
         runAsNonRoot: true
         runAsUser: 65534
       serviceAccountName: {{ include "resource.default.name" . }}
       terminationGracePeriodSeconds: 0
       tolerations:
-        - key: node.cluster.x-k8s.io/uninitialized
-          operator: Exists
-        - key: node.kubernetes.io/not-ready
-          operator: Exists
+        {{ .Values.tolerations | toYaml | nindent 8 }}
