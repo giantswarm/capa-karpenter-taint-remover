@@ -1,0 +1,36 @@
+version: 2.1
+
+orbs:
+  architect: giantswarm/architect@5.1.1
+
+workflows:
+  build:
+    jobs:
+      - architect/go-build:
+          name: go-build
+          context: architect
+          binary: capa-karpenter-taint-remover
+          filters:
+            tags:
+              only: /^v.*/
+
+      - architect/push-to-registries:
+          context: architect
+          name: push-to-registries
+          requires:
+            - go-build
+          filters:
+            tags:
+              only: /^v.*/
+
+      - architect/push-to-app-catalog:
+          context: "architect"
+          name: push-capa-karpenter-taint-remover-to-app-catalog
+          app_catalog: "playground-catalog"
+          app_catalog_test: "playground-test-catalog"
+          chart: "capa-karpenter-taint-remover"
+          requires:
+            - push-to-registries
+          filters:
+            tags:
+              only: /^v.*/

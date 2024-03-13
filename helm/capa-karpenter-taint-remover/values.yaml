@@ -1,0 +1,17 @@
+name: capa-karpenter-taint-remover
+namespace: kube-system
+serviceType: managed
+
+project:
+  branch: "[[ .Branch ]]"
+  commit: "[[ .SHA ]]"
+image:
+  name: "giantswarm/capa-karpenter-taint-remover"
+  tag: "[[ .Version ]]"
+  registry: "gsoci.azurecr.io"
+
+pod:
+  user:
+    id: 1000
+  group:
+    id: 1000

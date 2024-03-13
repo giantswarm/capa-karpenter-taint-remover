@@ -1,0 +1,8 @@
+name: capa-karpenter-taint-remover
+version: [[ .Version ]]
+description: "CAPA karpenter taint remover"
+appVersion: 0.0.1
+home: "https://github.com/giantswarm/capa-karpenter-taint-remover"
+apiVersion: v1
+annotations:
+  application.giantswarm.io/team: "phoenix"
