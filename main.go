@@ -30,6 +30,7 @@ import (
 	"k8s.io/utils/env"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+
 	//+kubebuilder:scaffold:imports
 
 	"github.com/giantswarm/capa-karpenter-taint-remover/internal/taintsfilter"
