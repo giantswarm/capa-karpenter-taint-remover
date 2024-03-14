@@ -19,6 +19,10 @@ spec:
     spec:
       containers:
         - name: "karpenter-taint-remover"
+          {{- if gt (len .Values.unwantedTaints) 0 }}
+          args:
+            - --unwanted-taints={{ .Values.unwantedTaints | join "," | quote }}
+          {{- end }}
           env:
             - name: NODE_NAME
               valueFrom:
@@ -44,4 +48,4 @@ spec:
       serviceAccountName: {{ include "resource.default.name" . }}
       terminationGracePeriodSeconds: 0
       tolerations:
-        {{ .Values.tolerations | toYaml | nindent 8 }}
+        {{- .Values.tolerations | toYaml | nindent 8 }}

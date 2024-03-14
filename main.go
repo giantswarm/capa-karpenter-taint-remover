@@ -18,8 +18,10 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -29,16 +31,20 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	//+kubebuilder:scaffold:imports
+
+	"github.com/giantswarm/capa-karpenter-taint-remover/internal/taintsfilter"
 )
 
-const retryAttempts = 5
+const (
+	retryAttempts = 5
+
+	defaultUnwantedTaints = "node.cluster.x-k8s.io/uninitialized"
+)
 
 var (
 	scheme = runtime.NewScheme()
 
-	unwantedTaints = []string{
-		"node.cluster.x-k8s.io/uninitialized",
-	}
+	unwantedTaints = make([]string, 0)
 )
 
 func init() {
@@ -48,6 +54,15 @@ func init() {
 }
 
 func main() {
+	var unwantedTaintsRaw string
+	flag.StringVar(&unwantedTaintsRaw, "unwanted-taints", defaultUnwantedTaints, "")
+	flag.Parse()
+
+	unwantedTaints = strings.Split(unwantedTaintsRaw, ",")
+	fmt.Printf("The list of onwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
+
+	taintsFilter := taintsfilter.New(unwantedTaints)
+
 	nodeName := env.GetString("NODE_NAME", "")
 	if nodeName == "" {
 		fmt.Printf("ERROR: NODE_NAME env cannot be empty\n")
@@ -66,7 +81,7 @@ func main() {
 		panic(err)
 	}
 
-	ctx := context.TODO()
+	ctx := context.Background()
 
 	patch := func() error {
 		var node v1.Node
@@ -83,7 +98,7 @@ func main() {
 			return nil
 		}
 
-		newTaints, shouldUpdate := filterUndesiredTaints(node.Spec.Taints)
+		newTaints, shouldUpdate := taintsFilter.FilterUndesiredTaints(node.Spec.Taints)
 
 		if shouldUpdate {
 			fmt.Printf("removing capa taints from node %s\n", nodeName)
@@ -105,14 +120,20 @@ func main() {
 	}
 
 	attempts := 0
-	for attempts < retryAttempts {
+	for {
 		err = patch()
 		if err == nil {
 			break
 		}
 
 		attempts++
-		fmt.Printf("failed to patch node, retrying\n")
+
+		if attempts < retryAttempts {
+			fmt.Printf("failed to patch node, retrying\n")
+			continue
+		}
+
+		panic("failed to patch node, aborting\n")
 	}
 
 	fmt.Printf("capa-karpenter-taint-remover finished successfully\n")
@@ -121,28 +142,4 @@ func main() {
 	select {
 	// sleeping forever
 	}
-}
-
-func isUndesiredTaint(taint v1.Taint) bool {
-	for _, unwantedTaint := range unwantedTaints {
-		if taint.Key == unwantedTaint {
-			return true
-		}
-	}
-
-	return false
-}
-
-func filterUndesiredTaints(taints []v1.Taint) ([]v1.Taint, bool) {
-	var shouldUpdate bool
-	var filteredTaints []v1.Taint
-	for _, taint := range taints {
-		if isUndesiredTaint(taint) {
-			shouldUpdate = true
-		} else {
-			filteredTaints = append(filteredTaints, taint)
-		}
-	}
-
-	return filteredTaints, shouldUpdate
 }

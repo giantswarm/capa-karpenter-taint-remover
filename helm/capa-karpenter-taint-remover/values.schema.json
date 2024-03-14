@@ -56,6 +56,36 @@
         },
         "serviceType": {
             "type": "string"
+        },
+        "tolerations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "effect": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "tolerationSeconds": {
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "unwantedTaints": {
+            "type": "array",
+            "default": "[\"node.cluster.x-k8s.io/uninitialized\"]",
+            "items": {
+                "type": "string"
+            }
         }
     }
 }

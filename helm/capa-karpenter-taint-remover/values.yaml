@@ -10,6 +10,12 @@ image:
   tag: "[[ .Version ]]"
   registry: "gsoci.azurecr.io"
 
+# This is the list of taints to be removed from the nodes.
+unwantedTaints:
+- node.cluster.x-k8s.io/uninitialized
+
+# The tolerations need to at least contain all taints defined in the `unwantedTaints` list.
+# WARNING: this is not validated by the chart, so make sure to keep them in sync.
 tolerations:
   - key: node.cluster.x-k8s.io/uninitialized
     operator: Exists
