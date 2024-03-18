@@ -39,6 +39,8 @@ func main() {
 	flag.StringVar(&unwantedTaintsRaw, "unwanted-taints", defaultUnwantedTaints, "")
 	flag.Parse()
 
+	unwantedTaintsRaw = strings.Trim(unwantedTaintsRaw, `"`)
+
 	unwantedTaints = strings.Split(unwantedTaintsRaw, ",")
 	fmt.Printf("The list of onwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
 
