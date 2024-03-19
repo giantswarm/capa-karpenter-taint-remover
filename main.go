@@ -5,7 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -122,7 +124,16 @@ func main() {
 	fmt.Printf("capa-karpenter-taint-remover finished successfully\n")
 	fmt.Printf("sleeping forever\n")
 
-	select {
-	// sleeping forever
-	}
+	// Wait for signals
+	sigc := make(chan os.Signal, 1)
+	signal.Notify(sigc,
+		syscall.SIGHUP,
+		syscall.SIGINT,
+		syscall.SIGTERM,
+		syscall.SIGQUIT)
+
+	s := <-sigc
+	fmt.Printf("Got signal: %q, exiting\n", s.String())
+
+	os.Exit(0)
 }
