@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2024-03-19
+
 ### Added
 
 - First release.
 
-[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.0.0...v0.1.0
