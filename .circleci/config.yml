@@ -26,8 +26,8 @@ workflows:
       - architect/push-to-app-catalog:
           context: "architect"
           name: push-capa-karpenter-taint-remover-to-app-catalog
-          app_catalog: "playground-catalog"
-          app_catalog_test: "playground-test-catalog"
+          app_catalog: giantswarm-catalog
+          app_catalog_test: giantswarm-test-catalog
           chart: "capa-karpenter-taint-remover"
           requires:
             - push-to-registries
