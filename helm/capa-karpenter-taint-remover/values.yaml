@@ -14,11 +14,6 @@ image:
 unwantedTaints:
 - node.cluster.x-k8s.io/uninitialized
 
-# The tolerations need to at least contain all taints defined in the `unwantedTaints` list.
-# WARNING: this is not validated by the chart, so make sure to keep them in sync.
-tolerations:
-  - operator: Exists
-
 pod:
   user:
     id: 1000
