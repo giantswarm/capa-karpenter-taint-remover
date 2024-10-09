@@ -48,4 +48,4 @@ spec:
       serviceAccountName: {{ include "resource.default.name" . }}
       terminationGracePeriodSeconds: 0
       tolerations:
-        {{- .Values.tolerations | toYaml | nindent 8 }}
+        - operator: Exists
