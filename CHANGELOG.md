@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Allow all taints in the daemonset
+
 ## [0.3.0] - 2024-03-19
 
 ### Changed
