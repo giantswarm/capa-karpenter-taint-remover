@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  architect: giantswarm/architect@5.1.1
+  architect: giantswarm/architect@5.11.4
 
 workflows:
   build:
@@ -22,16 +22,14 @@ workflows:
         filters:
           tags:
             only: /^v.*/
-
           branches:
-            ignore:
-            - main
-            - master
+            only: /.*/
     - architect/push-to-app-catalog:
         context: architect
         name: push-capa-karpenter-taint-remover-to-app-catalog
-        app_catalog: giantswarm-catalog
-        app_catalog_test: giantswarm-test-catalog
+        executor: app-build-suite
+        app_catalog: control-plane-catalog
+        app_catalog_test: control-plane-test-catalog
         chart: capa-karpenter-taint-remover
         requires:
         - push-to-registries
@@ -39,6 +37,4 @@ workflows:
           tags:
             only: /^v.*/
           branches:
-            ignore:
-            - main
-            - master
+            only: /.*/ 
