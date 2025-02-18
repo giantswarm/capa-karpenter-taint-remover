@@ -78,8 +78,8 @@ func main() {
 		}
 
 		// Check if node is managed by karpenter.
-		if node.Labels["managed-by"] != "karpenter" {
-			fmt.Printf("ERROR: this node is missing the `managed-by: karpenter` label. Aborting.\n")
+		if node.Labels["karpenter.sh/registered"] != "true" {
+			fmt.Printf("ERROR: this node is missing the `karpenter.sh/registered` label. Aborting.\n")
 			return nil
 		}
 
