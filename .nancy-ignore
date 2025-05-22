@@ -1,6 +1,2 @@
-# pkg:golang/k8s.io/apiserver@v0.29.2
-# This is present in the current latest v0.29.2 as well
-CVE-2020-8561 until=2024-12-01
-
-# pkg:golang/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.42.0
-CVE-2023-47108 until=2024-12-01
+CVE-2025-22870 until=2025-06-21 # golang.org/x/net@v0.34.0
+CVE-2025-22872 until=2025-06-21 # golang.org/x/net@v0.34.0
