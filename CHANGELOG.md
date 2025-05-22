@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Change node selector from `managed-by` to `karpenter.sh/registered`.
+
 ## [0.4.0] - 2024-10-10
 
 ### Changed
