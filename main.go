@@ -23,7 +23,7 @@ import (
 const (
 	retryAttempts = 5
 
-	defaultUnwantedTaints = "node.cluster.x-k8s.io/uninitialized"
+	defaultUnwantedTaints = "karpenter.sh/unregistered"
 )
 
 var (
@@ -77,9 +77,8 @@ func main() {
 			return err
 		}
 
-		// Check if node is managed by karpenter.
-		if node.Labels["managed-by"] != "karpenter" {
-			fmt.Printf("ERROR: this node is missing the `managed-by: karpenter` label. Aborting.\n")
+		// Ignore nodes that are not registered by karpenter.
+		if node.Labels["karpenter.sh/registered"] != "true" {
 			return nil
 		}
 
