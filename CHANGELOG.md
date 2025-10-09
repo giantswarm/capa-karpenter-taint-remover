@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+###
+
+- Not managing the CAPA taint anymore, it manages a karpenter taint that is reverted by CAPA.
+
 ## [0.6.0] - 2025-05-26
 
 ### Changed
