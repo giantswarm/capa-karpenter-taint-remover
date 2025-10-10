@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-###
+### Changed
 
-- Not managing the CAPA taint anymore, it manages a karpenter taint that is reverted by CAPA.
+- Not managing the CAPI taint anymore, it manages the `karpenter.sh/unregistered` karpenter taint that is applied by CAPI controllers when using a stale version for the patch request.
 
 ## [0.6.0] - 2025-05-26
 
