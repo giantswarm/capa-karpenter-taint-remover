@@ -44,7 +44,7 @@ func main() {
 	unwantedTaintsRaw = strings.Trim(unwantedTaintsRaw, `"`)
 
 	unwantedTaints = strings.Split(unwantedTaintsRaw, ",")
-	fmt.Printf("The list of onwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
+	fmt.Printf("The list of unwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
 
 	taintsFilter := taintsfilter.New(unwantedTaints)
 
