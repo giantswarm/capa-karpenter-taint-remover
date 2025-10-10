@@ -38,7 +38,7 @@ spec:
               drop:
                 - ALL
       nodeSelector:
-        karpenter.sh/registered: true
+        karpenter.sh/registered: "true"
       priorityClassName: system-node-critical
       securityContext:
         seccompProfile:
