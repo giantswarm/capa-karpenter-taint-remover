@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2025-10-16
+
 ### Changed
 
 - Not managing the CAPI taint anymore, it manages the `karpenter.sh/unregistered` karpenter taint that is applied by CAPI controllers when using a stale version for the patch request.
@@ -47,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release.
 
-[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.3.0...v0.4.0
