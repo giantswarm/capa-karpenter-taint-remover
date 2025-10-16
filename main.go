@@ -23,7 +23,7 @@ import (
 const (
 	retryAttempts = 5
 
-	defaultUnwantedTaints = "node.cluster.x-k8s.io/uninitialized"
+	defaultUnwantedTaints = "karpenter.sh/unregistered"
 )
 
 var (
@@ -44,7 +44,7 @@ func main() {
 	unwantedTaintsRaw = strings.Trim(unwantedTaintsRaw, `"`)
 
 	unwantedTaints = strings.Split(unwantedTaintsRaw, ",")
-	fmt.Printf("The list of onwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
+	fmt.Printf("The list of unwanted taints is:\n%s\n", strings.Join(unwantedTaints, "\n"))
 
 	taintsFilter := taintsfilter.New(unwantedTaints)
 
@@ -77,9 +77,8 @@ func main() {
 			return err
 		}
 
-		// Check if node is managed by karpenter.
+		// Ignore nodes that are not registered by karpenter.
 		if node.Labels["karpenter.sh/registered"] != "true" {
-			fmt.Printf("ERROR: this node is missing the `karpenter.sh/registered` label. Aborting.\n")
 			return nil
 		}
 

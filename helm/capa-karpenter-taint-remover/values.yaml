@@ -12,7 +12,7 @@ image:
 
 # This is the list of taints to be removed from the nodes.
 unwantedTaints:
-- node.cluster.x-k8s.io/uninitialized
+- karpenter.sh/unregistered
 
 pod:
   user:
