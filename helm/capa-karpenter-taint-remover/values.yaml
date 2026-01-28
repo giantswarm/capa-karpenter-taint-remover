@@ -2,12 +2,9 @@ name: capa-karpenter-taint-remover
 namespace: kube-system
 serviceType: managed
 
-project:
-  branch: "[[ .Branch ]]"
-  commit: "[[ .SHA ]]"
 image:
   name: "giantswarm/capa-karpenter-taint-remover"
-  tag: "[[ .Version ]]"
+  tag: ""
   registry: "gsoci.azurecr.io"
 
 # This is the list of taints to be removed from the nodes.
@@ -19,3 +16,10 @@ pod:
     id: 1000
   group:
     id: 1000
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+  limits:
+    memory: 64Mi
