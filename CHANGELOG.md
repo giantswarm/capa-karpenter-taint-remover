@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-02-19
+
 ### Changed
 
 - Migrate to App Build Suite (ABS) for building and publishing Helm charts.
@@ -59,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release.
 
-[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.6.0...v1.0.0
 [0.6.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.5.0...v0.6.0
