@@ -7,3 +7,6 @@ home: "https://github.com/giantswarm/capa-karpenter-taint-remover"
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
   io.giantswarm.application.team: phoenix
+  io.giantswarm.application.audience: all
+  io.giantswarm.application.managed: "true"
+  io.giantswarm.application.restrictions.compatible-providers: "aws"
