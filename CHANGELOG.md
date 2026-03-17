@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add `io.giantswarm.application.audience: all` annotation to publish the app to the customer Backstage catalog.
+- Migrate chart metadata annotations to `io.giantswarm.application.*` format.
+
 ## [1.0.2] - 2026-02-19
 
 ### Changed
