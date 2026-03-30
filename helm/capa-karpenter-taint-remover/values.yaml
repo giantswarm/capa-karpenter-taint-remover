@@ -23,3 +23,10 @@ resources:
     memory: 32Mi
   limits:
     memory: 64Mi
+
+verticalPodAutoscaler:
+  enabled: true
+  containerPolicies:
+    - containerName: karpenter-taint-remover
+      controlledValues: RequestsAndLimits
+      mode: Auto
