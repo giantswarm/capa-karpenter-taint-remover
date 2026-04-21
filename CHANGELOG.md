@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add VPA for `karpenter-taint-remover` DaemonSet with `updateMode: Initial`.
+
 ### Changed
 
 - Add `io.giantswarm.application.audience: all` annotation to publish the app to the customer Backstage catalog.
