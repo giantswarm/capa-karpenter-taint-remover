@@ -2,7 +2,7 @@ module github.com/giantswarm/capa-karpenter-taint-remover
 
 go 1.25.0
 
-toolchain go1.26.1
+toolchain go1.26.2
 
 require (
 	k8s.io/api v0.35.2
