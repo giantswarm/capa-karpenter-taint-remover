@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Build and publish a multi-arch (linux/amd64 + linux/arm64) container image.
 - Add `io.giantswarm.application.audience: all` annotation to publish the app to the customer Backstage catalog.
 - Migrate chart metadata annotations to `io.giantswarm.application.*` format.
 
