@@ -99,6 +99,17 @@
                     }
                 }
             }
+        },
+        "verticalPodAutoscaler": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "containerPolicies": {
+                    "type": "array"
+                }
+            }
         }
     }
 }
