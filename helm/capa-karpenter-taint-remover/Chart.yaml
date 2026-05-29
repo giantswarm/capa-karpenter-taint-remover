@@ -1,8 +1,8 @@
 apiVersion: v2
 name: capa-karpenter-taint-remover
-version: 1.0.2
+version: 1.1.0
 description: "CAPA karpenter taint remover"
-appVersion: 1.0.1-dev
+appVersion: 1.1.0
 home: "https://github.com/giantswarm/capa-karpenter-taint-remover"
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:

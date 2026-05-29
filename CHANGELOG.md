@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-05-29
+
 ### Changed
 
 - Build and publish a multi-arch (linux/amd64 + linux/arm64) container image.
@@ -67,7 +69,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release.
 
-[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/giantswarm/capa-karpenter-taint-remover/compare/v0.6.0...v1.0.0
