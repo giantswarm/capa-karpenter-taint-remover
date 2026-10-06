@@ -1,16 +1,14 @@
 version: 2.1
 
 orbs:
-  architect: giantswarm/architect@7.1.0
+  architect: giantswarm/architect@10.11.1
 
 workflows:
   build:
     jobs:
     - architect/go-build:
-        matrix:
-          parameters:
-            architecture: ["linux/amd64", "linux/arm64"]
-        name: go-build-capa-karpenter-taint-remover-<<matrix.architecture>>
+        name: go-build-capa-karpenter-taint-remover
+        architectures: "linux/amd64,linux/arm64"
         context: architect
         binary: capa-karpenter-taint-remover
         filters:
@@ -20,10 +18,8 @@ workflows:
     - architect/push-to-registries:
         context: architect
         name: push-to-registries
-        multiarch: true
         requires:
-        - go-build-capa-karpenter-taint-remover-linux/amd64
-        - go-build-capa-karpenter-taint-remover-linux/arm64
+        - go-build-capa-karpenter-taint-remover
         filters:
           tags:
             only: /^v.*/
